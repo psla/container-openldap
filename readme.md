@@ -39,7 +39,12 @@ podman generate systemd --new server_ldap_1 >  ~/.config/systemd/user/server_lda
 Open the container's terminal (generally don't do it, this is only require for loading data for the first time and hopefully never again :) ):
 
 ```
-podman exec -it 29cdd59c65fc /bin/sh
+
+$ podman container ls
+CONTAINER ID  IMAGE                         COMMAND               CREATED         STATUS             PORTS                     NAMES
+29cdd59c65fc  localhost/server_ldap:latest  -h ldap://0.0.0.0...  15 minutes ago  Up 15 minutes ago  0.0.0.0:11389->11389/tcp  server_ldap_1
+
+$ podman exec -it 29cdd59c65fc /bin/sh
 ```
 ```
 slapadd -n 0 -F /etc/openldap/slapd.d -l /data/config.ldif
