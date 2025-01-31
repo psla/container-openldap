@@ -1,0 +1,8 @@
+services:
+  ldap:
+    build: .
+    ports:
+      - "11389:11389"
+    volumes:
+      - ./data:/data:Z,U
+      - ./etc:/etc/openldap/slapd.d:Z,U
