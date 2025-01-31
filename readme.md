@@ -33,3 +33,26 @@ podman-compose up --build
 ```
 podman generate systemd --new server_ldap_1 >  ~/.config/systemd/user/server_ldap_1.service
 ```
+
+# Loading the data after first startup
+
+```
+slapadd -n 0 -F /etc/openldap/slapd.d -l /data/config.ldif
+slapadd -n 1 -F /etc/openldap/slapd.d -l /data/data.ldif
+```
+
+Compatibility issues:
+
+The olcModulePath had to be modified in the config.ldif:
+
+```
+olcModulePath: /usr/lib/openldap
+```
+
+And similarly, data directory needs to be modified as well:
+
+```
+olcDataDirectory: /data
+```
+
+
