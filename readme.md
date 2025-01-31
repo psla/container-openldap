@@ -36,6 +36,11 @@ podman generate systemd --new server_ldap_1 >  ~/.config/systemd/user/server_lda
 
 # Loading the data after first startup
 
+Open the container's terminal (generally don't do it, this is only require for loading data for the first time and hopefully never again :) ):
+
+```
+podman exec -it 29cdd59c65fc /bin/sh
+```
 ```
 slapadd -n 0 -F /etc/openldap/slapd.d -l /data/config.ldif
 slapadd -n 1 -F /etc/openldap/slapd.d -l /data/data.ldif
