@@ -65,7 +65,19 @@ And similarly, data directory needs to be modified as well:
 olcDataDirectory: /data
 ```
 
-# Configure replication
+# Configure replication (and add the right schema)
 
 slapadd -n 0 -F /etc/openldap/slapd.d -l /data/replication.ldif
+
+Adding the schemas:
+
+```
+slapadd -n 0 -l /etc/openldap/schema/core.ldif
+slapadd -n 0 -l /etc/openldap/schema/cosine.ldif
+slapadd -n 0 -l /etc/openldap/schema/inetorgperson.ldif
+slapadd -n 0 -l /etc/openldap/schema/nis.ldif
+slapadd -n 0 -l /data/samba.ldif
+slapadd -n 0 -l /data/postfix.ldif
+slapadd -n 0 -l /data/misc.ldif
+```
 
