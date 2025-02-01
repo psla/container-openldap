@@ -65,4 +65,7 @@ And similarly, data directory needs to be modified as well:
 olcDataDirectory: /data
 ```
 
+# Configure replication
+
+slapadd -n 0 -F /etc/openldap/slapd.d -l /data/replication.ldif
 
